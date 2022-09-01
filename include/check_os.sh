@@ -72,6 +72,10 @@ elif [ -e "/etc/rocky-release" ]; then
   Family=RHEL
   Platform=Rocky
   grep -Eqi "release 9." /etc/rocky-release && RHEL_ver=9
+elif [ -e "/etc/os-release" ]; then
+  Family=RHEL
+  Platform=CentOS
+  grep -Eqi "release 9." /etc/os-release && RHEL_ver=9
 else
   command -v lsb_release >/dev/null 2>&1 || { echo "${CFAILURE}${PM} source failed! ${CEND}"; kill -9 $$; exit 1; }
 fi
